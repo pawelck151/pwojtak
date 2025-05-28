@@ -15,14 +15,25 @@ const Experience: React.FC = () => {
   const experienceList: ExperienceItem[] = [
     {
       company: "ClearCourse",
-      position: "Lead QA Automation Engineer",
+      position: "CoE Lead QA",
+      period: "2024 - Present",
+      description: "Responsible for defining, implementing, and overseeing QA best practices, standards, and testing strategies across the organization.",
+      achievements: [
+        "Established a QA Community of Practice to foster collaboration and knowledge exchange across teams",
+        "Organized and led QA workshops to upskill team members and promote testing best practices",
+        "Initiated and facilitated company-wide knowledge sharing sessions, increasing cross-functional awareness and engagement",
+        "Defined and implemented QA standards for both manual and automated testing to ensure consistency and quality across all projects"
+      ]
+    },
+    {
+      company: "ClearCourse",
+      position: "Senior Test Automation Engineer",
       period: "2023 - 2024",
       description: "Leading a team of QA engineers to implement automated testing solutions for enterprise-level applications.",
       achievements: [
-        "Reduced regression testing time by 80% through strategic test automation",
-        "Implemented CI/CD pipeline integration for continuous testing",
-        "Led the transition from manual to automated testing processes",
-        "Established QA best practices and coding standards for the team"
+        "Preparing a test framework (from scratch) using playwright for UI and Api testing",
+        "Preparing all pipelines (yaml's) for nightly runs",
+        "Sharing knowledge from manual and automation testers"
       ]
     },
     {

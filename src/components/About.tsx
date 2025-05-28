@@ -43,7 +43,7 @@ const About: React.FC = () => {
         >
           <div className="rounded-xl overflow-hidden shadow-xl">
             <img 
-              src="https://images.pexels.com/photos/3861959/pexels-photo-3861959.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+              src="/src/assets/kawka.jpg" 
               alt="Professional QA Engineer at work" 
               className="w-full h-auto object-cover"
             />
@@ -52,7 +52,20 @@ const About: React.FC = () => {
           <div>
             <h3 className="text-2xl font-bold text-slate-800 mb-6">Who I Am</h3>
             <p className="text-gray-600 mb-6">
-              With over 8 years of experience in the quality assurance field, I specialize in building robust test automation frameworks and implementing effective QA processes. My approach combines technical expertise with a strong focus on business value, ensuring that testing efforts align with organizational goals.
+              A strong technical background in test automation
+              and quality assurance, with hands-on experience
+              in designing and maintaining scalable automation
+              frameworks using Playwright with TypeScript and
+              C#/.NET. Proven experience in leading QA teams,
+              defining test strategies, and integrating automated
+              tests into CI/CD pipelines (e.g., Jenkins, Azure
+              DevOps). Passionate about delivering high-quality
+              software through robust E2E, integration, and API
+              test coverage, while continuously improving QA
+              processes. Focused on delivering impactful,
+              maintainable automation solutions that align with
+              long-term product and business goals in agile,
+              innovation-driven environments.
             </p>
             
             <div className="space-y-4 mb-8">
