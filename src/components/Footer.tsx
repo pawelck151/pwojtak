@@ -43,10 +43,7 @@ const Footer: React.FC = () => {
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
             &copy; {new Date().getFullYear()} QA Automation Engineer. All rights reserved.
           </p>
-          
-          <p className="text-gray-500 text-sm">
-            Designed and developed with <span className="text-red-500">❤️</span>
-          </p>
+      
         </div>
       </div>
     </footer>
