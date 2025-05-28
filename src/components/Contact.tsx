@@ -82,7 +82,7 @@ const Contact: React.FC = () => {
                 <div>
                   <h4 className="font-semibold text-slate-700">Email</h4>
                   <a href="mailto:contact@qaengineer.com" className="text-teal-600 hover:text-teal-800 transition-colors">
-                    contact@qaengineer.com
+                    wojtakpawel@gmail.com
                   </a>
                 </div>
               </div>
@@ -94,7 +94,7 @@ const Contact: React.FC = () => {
                 <div>
                   <h4 className="font-semibold text-slate-700">Phone</h4>
                   <a href="tel:+11234567890" className="text-teal-600 hover:text-teal-800 transition-colors">
-                    +1 (123) 456-7890
+                    +48 660463861
                   </a>
                 </div>
               </div>
@@ -104,8 +104,8 @@ const Contact: React.FC = () => {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-700">Location</h4>
-                  <p className="text-gray-600">San Francisco, California</p>
+                  <h4 className="font-semibold text-slate-700">Kraków</h4>
+                  <p className="text-gray-600">Małopolska</p>
                 </div>
               </div>
             </div>

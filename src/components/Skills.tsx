@@ -11,31 +11,31 @@ const Skills: React.FC = () => {
 
   const skills: Skill[] = [
     // Automation
-    { name: 'Selenium', proficiency: 95, category: 'Automation' },
-    { name: 'Cypress', proficiency: 90, category: 'Automation' },
-    { name: 'Playwright', proficiency: 85, category: 'Automation' },
+    { name: 'Playwright', proficiency: 99, category: 'Automation' },
+    { name: 'Selenium', proficiency: 90, category: 'Automation' },
     { name: 'Appium', proficiency: 80, category: 'Automation' },
-    { name: 'Protractor', proficiency: 75, category: 'Automation' },
+    { name: 'CodedUI', proficiency: 80, category: 'Automation' },
+    { name: 'TestComplete', proficiency: 75, category: 'Automation' },
     
     // Testing
     { name: 'API Testing', proficiency: 95, category: 'Testing' },
-    { name: 'Performance Testing', proficiency: 85, category: 'Testing' },
-    { name: 'Security Testing', proficiency: 80, category: 'Testing' },
-    { name: 'E2E Testing', proficiency: 90, category: 'Testing' },
-    { name: 'BDD', proficiency: 85, category: 'Testing' },
+    { name: 'Performance Testing', proficiency: 80, category: 'Testing' },
+    { name: 'E2E Testing', proficiency: 99, category: 'Testing' },
+    { name: 'BDD Testing', proficiency: 99, category: 'Testing' },
+    { name: 'Accessibility Testing', proficiency: 80, category: 'Testing' },
     
     // Tools
     { name: 'Jenkins', proficiency: 90, category: 'Tools' },
     { name: 'JIRA', proficiency: 95, category: 'Tools' },
     { name: 'Docker', proficiency: 85, category: 'Tools' },
-    { name: 'Git', proficiency: 90, category: 'Tools' },
+    { name: 'Git', proficiency: 99, category: 'Tools' },
     { name: 'Postman', proficiency: 95, category: 'Tools' },
     
     // Languages
-    { name: 'Java', proficiency: 90, category: 'Languages' },
-    { name: 'JavaScript', proficiency: 85, category: 'Languages' },
-    { name: 'TypeScript', proficiency: 80, category: 'Languages' },
-    { name: 'Python', proficiency: 85, category: 'Languages' },
+    { name: 'C#', proficiency: 90, category: 'Languages' },
+    { name: 'JavaScript', proficiency: 75, category: 'Languages' },
+    { name: 'TypeScript', proficiency: 85, category: 'Languages' },
+    { name: 'Python', proficiency: 70, category: 'Languages' },
     { name: 'SQL', proficiency: 90, category: 'Languages' },
   ];
 

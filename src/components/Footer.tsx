@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           </div>
           
           <div className="flex space-x-8 mb-6 md:mb-0">
-            {['about', 'skills', 'projects', 'experience', 'testimonials', 'contact'].map((item) => (
+            {['about', 'skills', 'projects', 'experience', 'contact'].map((item) => (
               <a
                 key={item}
                 href={`#${item}`}

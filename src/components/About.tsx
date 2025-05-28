@@ -57,9 +57,7 @@ const About: React.FC = () => {
               in designing and maintaining scalable automation
               frameworks using Playwright with TypeScript and
               C#/.NET. Proven experience in leading QA teams,
-              defining test strategies, and integrating automated
-              tests into CI/CD pipelines (e.g., Jenkins, Azure
-              DevOps). Passionate about delivering high-quality
+              defining test strategies. Passionate about delivering high-quality
               software through robust E2E, integration, and API
               test coverage, while continuously improving QA
               processes. Focused on delivering impactful,

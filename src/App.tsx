@@ -19,7 +19,6 @@ function App() {
         <Skills />
         <Projects />
         <Experience />
-        <Testimonials />
         <Contact />
       </main>
       <Footer />

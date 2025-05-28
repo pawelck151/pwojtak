@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            {['about', 'skills', 'projects', 'experience', 'testimonials', 'contact'].map((item) => (
+            {['about', 'skills', 'projects', 'experience', 'contact'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
