@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import kawkaImg from '../assets/kawka.jpg';
 import { Code, Bug, TestTube, Database } from 'lucide-react';
 
 const About: React.FC = () => {
@@ -43,7 +44,7 @@ const About: React.FC = () => {
         >
           <div className="rounded-xl overflow-hidden shadow-xl">
             <img 
-              src="/src/assets/kawka.jpg" 
+              src={kawkaImg} 
               alt="Professional QA Engineer at work" 
               className="w-full h-auto object-cover"
             />
