@@ -132,7 +132,7 @@ const Experience: React.FC = () => {
 
                 {/* Content */}
                 <div className={`ml-10 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <div className="bg-white/60 backdrop-blur-sm border border-white/80 p-6 rounded-2xl shadow-lg">
+                  <div className="bg-white/60 backdrop-blur-sm border border-white/80 p-6 rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-xl font-bold text-slate-800">{item.position}</h3>
                       <span className="flex items-center text-slate-400 text-sm whitespace-nowrap ml-2">
