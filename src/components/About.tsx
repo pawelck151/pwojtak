@@ -3,6 +3,7 @@ import kawkaImg from '../assets/kawka.jpg';
 import { Code, Bug, TestTube, Database } from 'lucide-react';
 
 const About: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const itemsRef = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
@@ -22,8 +23,8 @@ const About: React.FC = () => {
       { threshold: 0.1 }
     );
 
-    if (itemsRef.current[0]) {
-      observer.observe(itemsRef.current[0]);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
     return () => observer.disconnect();
@@ -33,8 +34,31 @@ const About: React.FC = () => {
     itemsRef.current[i] = el;
   };
 
+  const cards = [
+    {
+      icon: <Code className="h-6 w-6 text-teal-500" />,
+      title: "Automation Architect",
+      description: "Designing scalable test frameworks that improve coverage and efficiency"
+    },
+    {
+      icon: <Bug className="h-6 w-6 text-teal-500" />,
+      title: "Quality Advocate",
+      description: "Championing quality throughout the development lifecycle"
+    },
+    {
+      icon: <TestTube className="h-6 w-6 text-teal-500" />,
+      title: "Test Strategist",
+      description: "Creating comprehensive testing strategies for complex applications"
+    },
+    {
+      icon: <Database className="h-6 w-6 text-teal-500" />,
+      title: "Data-Driven Tester",
+      description: "Leveraging metrics and data analysis to optimize testing efforts"
+    }
+  ];
+
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" ref={sectionRef} className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">About Me</h2>
@@ -81,33 +105,13 @@ const About: React.FC = () => {
               </p>
             </div>
 
-            <div
-              ref={ref(3)}
-              className="space-y-4 mb-8 opacity-0 translate-y-6 transition-all duration-700 ease-out"
-            >
-              {[
-                {
-                  icon: <Code className="h-6 w-6 text-teal-500" />,
-                  title: "Automation Architect",
-                  description: "Designing scalable test frameworks that improve coverage and efficiency"
-                },
-                {
-                  icon: <Bug className="h-6 w-6 text-teal-500" />,
-                  title: "Quality Advocate",
-                  description: "Championing quality throughout the development lifecycle"
-                },
-                {
-                  icon: <TestTube className="h-6 w-6 text-teal-500" />,
-                  title: "Test Strategist",
-                  description: "Creating comprehensive testing strategies for complex applications"
-                },
-                {
-                  icon: <Database className="h-6 w-6 text-teal-500" />,
-                  title: "Data-Driven Tester",
-                  description: "Leveraging metrics and data analysis to optimize testing efforts"
-                }
-              ].map((item, index) => (
-                <div key={index} className="flex items-start">
+            <div className="space-y-4 mb-8">
+              {cards.map((item, index) => (
+                <div
+                  key={index}
+                  ref={ref(3 + index)}
+                  className="flex items-start opacity-0 translate-y-6 transition-all duration-700 ease-out"
+                >
                   <div className="mt-1 mr-4 p-2 bg-teal-50 rounded-lg">
                     {item.icon}
                   </div>
@@ -120,7 +124,7 @@ const About: React.FC = () => {
             </div>
 
             <button
-              ref={ref(4)}
+              ref={ref(7)}
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 bg-teal-500 hover:bg-teal-400 text-white rounded-full font-medium tracking-wider uppercase text-sm transition-all duration-300 hover:scale-105 opacity-0 translate-y-6 mt-4"
             >
