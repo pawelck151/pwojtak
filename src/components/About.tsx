@@ -126,7 +126,7 @@ const About: React.FC = () => {
             <button
               ref={ref(7)}
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-teal-500 hover:bg-teal-400 text-white rounded-full font-medium tracking-wider uppercase text-sm transition-all duration-300 hover:scale-105 opacity-0 translate-y-6 mt-4"
+              className="px-8 py-4 bg-teal-500 hover:bg-teal-400 text-white rounded-full font-medium tracking-wider uppercase text-sm opacity-0 translate-y-6 transition-all duration-700 ease-out hover:scale-105 mt-4"
             >
               View My Projects
             </button>
