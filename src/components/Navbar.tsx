@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <Code2 className="h-8 w-8 text-teal-500 mr-2" />
-            <span className="text-xl font-bold text-white">QA Engineer</span>
+            <span className="text-xl font-bold text-white">Paweł Wojtak</span>
           </div>
           
           {/* Desktop Navigation */}
@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
         {isOpen && (
           <div className="md:hidden mt-4 py-4 bg-slate-800 rounded-lg shadow-xl">
             <div className="flex flex-col space-y-4 px-4">
-              {['about', 'skills', 'projects', 'experience', 'testimonials', 'contact'].map((item) => (
+              {['about', 'skills', 'projects', 'experience', 'contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
