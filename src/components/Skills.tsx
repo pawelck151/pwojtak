@@ -7,45 +7,52 @@ interface Skill {
 }
 
 const Skills: React.FC = () => {
-  const skillsRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
 
   const skills: Skill[] = [
     // Automation
-    { name: 'Playwright', proficiency: 99, category: 'Automation' },
+    { name: 'Playwright', proficiency: 100, category: 'Automation' },
     { name: 'Selenium', proficiency: 90, category: 'Automation' },
     { name: 'Appium', proficiency: 80, category: 'Automation' },
     { name: 'CodedUI', proficiency: 80, category: 'Automation' },
     { name: 'TestComplete', proficiency: 75, category: 'Automation' },
-    
+
     // Testing
-    { name: 'API Testing', proficiency: 95, category: 'Testing' },
+    { name: 'API Testing', proficiency: 100, category: 'Testing' },
     { name: 'Performance Testing', proficiency: 80, category: 'Testing' },
-    { name: 'E2E Testing', proficiency: 99, category: 'Testing' },
-    { name: 'BDD Testing', proficiency: 99, category: 'Testing' },
+    { name: 'E2E Testing', proficiency: 100, category: 'Testing' },
+    { name: 'BDD Testing', proficiency: 100, category: 'Testing' },
     { name: 'Accessibility Testing', proficiency: 80, category: 'Testing' },
-    
+
     // Tools
     { name: 'Jenkins', proficiency: 90, category: 'Tools' },
-    { name: 'JIRA', proficiency: 95, category: 'Tools' },
+    { name: 'JIRA', proficiency: 100, category: 'Tools' },
     { name: 'Docker', proficiency: 85, category: 'Tools' },
-    { name: 'Git', proficiency: 99, category: 'Tools' },
-    { name: 'Postman', proficiency: 95, category: 'Tools' },
-    
+    { name: 'Git', proficiency: 100, category: 'Tools' },
+    { name: 'Postman', proficiency: 100, category: 'Tools' },
+
     // Languages
-    { name: 'C#', proficiency: 90, category: 'Languages' },
+    { name: 'TypeScript', proficiency: 100, category: 'Languages' },
+    { name: 'C#', proficiency: 100, category: 'Languages' },
     { name: 'JavaScript', proficiency: 75, category: 'Languages' },
-    { name: 'TypeScript', proficiency: 85, category: 'Languages' },
     { name: 'Python', proficiency: 70, category: 'Languages' },
-    { name: 'SQL', proficiency: 90, category: 'Languages' },
+    { name: 'SQL', proficiency: 100, category: 'Languages' },
   ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100');
-          entry.target.classList.remove('translate-y-10', 'opacity-0');
-          
+          // Staggered cards
+          cardRefs.current.forEach((el, i) => {
+            if (!el) return;
+            setTimeout(() => {
+              el.classList.remove('opacity-0', 'translate-y-6');
+              el.classList.add('opacity-100', 'translate-y-0');
+            }, 150 * i);
+          });
+
           // Animate skill bars
           const skillBars = document.querySelectorAll('.skill-bar-fill');
           skillBars.forEach((bar, index) => {
@@ -53,26 +60,28 @@ const Skills: React.FC = () => {
               (bar as HTMLElement).style.width = bar.getAttribute('data-width') || '0%';
             }, 100 * index);
           });
+
+          observer.disconnect();
         }
       },
       { threshold: 0.1 }
     );
 
-    if (skillsRef.current) {
-      observer.observe(skillsRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
-    return () => {
-      if (skillsRef.current) {
-        observer.unobserve(skillsRef.current);
-      }
-    };
+    return () => observer.disconnect();
   }, []);
+
+  const cardRef = (i: number) => (el: HTMLElement | null) => {
+    cardRefs.current[i] = el;
+  };
 
   const categories = ['Automation', 'Testing', 'Tools', 'Languages'] as const;
 
   return (
-    <section id="skills" className="py-20 bg-slate-50">
+    <section id="skills" ref={sectionRef} className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Technical Skills</h2>
@@ -81,14 +90,15 @@ const Skills: React.FC = () => {
             My technical toolkit is continuously evolving to keep pace with industry trends and best practices
           </p>
         </div>
-        
-        <div 
-          ref={skillsRef} 
-          className="transform translate-y-10 opacity-0 transition-all duration-1000 ease-out"
-        >
+
+        <div>
           <div className="grid md:grid-cols-2 gap-8">
-            {categories.map((category) => (
-              <div key={category} className="bg-white rounded-xl shadow-md p-6">
+            {categories.map((category, i) => (
+              <div
+                key={category}
+                ref={cardRef(i)}
+                className="bg-white rounded-xl shadow-md p-6 opacity-0 translate-y-6 transition-all duration-700 ease-out"
+              >
                 <h3 className="text-xl font-bold text-slate-800 mb-6">{category}</h3>
                 <div className="space-y-5">
                   {skills
@@ -100,7 +110,7 @@ const Skills: React.FC = () => {
                           <span className="text-slate-600">{skill.proficiency}%</span>
                         </div>
                         <div className="h-2 bg-slate-200 rounded-full">
-                          <div 
+                          <div
                             className="skill-bar-fill h-full bg-teal-500 rounded-full transition-all duration-1000 ease-out"
                             style={{ width: '0%' }}
                             data-width={`${skill.proficiency}%`}
@@ -112,18 +122,21 @@ const Skills: React.FC = () => {
               </div>
             ))}
           </div>
-          
-          <div className="mt-16 bg-white rounded-xl shadow-md p-8">
+
+          <div
+            ref={cardRef(4)}
+            className="mt-8 bg-white rounded-xl shadow-md p-8 opacity-0 translate-y-6 transition-all duration-700 ease-out"
+          >
             <h3 className="text-xl font-bold text-slate-800 mb-6 text-center">Additional Competencies</h3>
             <div className="flex flex-wrap justify-center gap-3">
               {[
-                "Test Planning", "Test Strategy", "Agile/Scrum", "CI/CD", "Accessibility Testing",
+                "Test Planning", "Test Strategy", "Agile/Scrum", "CI/CD",
                 "Mobile Testing", "Cross-Browser Testing", "Regression Testing", "Continuous Testing",
                 "Test Management", "Risk Analysis", "Defect Management", "Test Metrics", "Root Cause Analysis"
               ].map((item, index) => (
-                <span 
-                  key={index} 
-                  className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium"
+                <span
+                  key={index}
+                  className="px-4 py-2 bg-teal-50 text-teal-700 border border-teal-100 rounded-full text-sm font-medium"
                 >
                   {item}
                 </span>
