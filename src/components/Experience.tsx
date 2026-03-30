@@ -85,7 +85,7 @@ const Experience: React.FC = () => {
           timelineItems.forEach((item, index) => {
             setTimeout(() => {
               item.classList.remove('opacity-0');
-              item.classList.add('opacity-100', 'translate-x-0');
+              item.classList.add('opacity-100', 'translate-x-0', 'translate-y-0');
             }, 200 * index);
           });
         }
@@ -127,10 +127,10 @@ const Experience: React.FC = () => {
             {experienceList.map((item, index) => (
               <div 
                 key={index} 
-                className={`timeline-item relative flex flex-col md:flex-row mb-8 md:mb-16 opacity-0 transition-all duration-700 ease-out ${
-                  index % 2 === 0 
-                    ? 'md:flex-row-reverse -translate-x-10' 
-                    : 'translate-x-10'
+                className={`timeline-item relative flex flex-col md:flex-row mb-8 md:mb-16 opacity-0 transition-all duration-700 ease-out translate-y-4 md:translate-y-0 ${
+                  index % 2 === 0
+                    ? 'md:flex-row-reverse md:-translate-x-10'
+                    : 'md:translate-x-10'
                 }`}
               >
                 {/* Timeline Point */}
