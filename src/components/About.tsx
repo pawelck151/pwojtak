@@ -3,29 +3,35 @@ import kawkaImg from '../assets/kawka.jpg';
 import { Code, Bug, TestTube, Database } from 'lucide-react';
 
 const About: React.FC = () => {
-  const aboutRef = useRef<HTMLDivElement>(null);
+  const itemsRef = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100');
-          entry.target.classList.remove('translate-y-10', 'opacity-0');
+          itemsRef.current.forEach((el, i) => {
+            if (!el) return;
+            setTimeout(() => {
+              el.classList.remove('opacity-0', 'translate-y-6');
+              el.classList.add('opacity-100', 'translate-y-0');
+            }, 150 * i);
+          });
+          observer.disconnect();
         }
       },
       { threshold: 0.1 }
     );
 
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
+    if (itemsRef.current[0]) {
+      observer.observe(itemsRef.current[0]);
     }
 
-    return () => {
-      if (aboutRef.current) {
-        observer.unobserve(aboutRef.current);
-      }
-    };
+    return () => observer.disconnect();
   }, []);
+
+  const ref = (i: number) => (el: HTMLElement | null) => {
+    itemsRef.current[i] = el;
+  };
 
   return (
     <section id="about" className="py-20 bg-white">
@@ -37,37 +43,48 @@ const About: React.FC = () => {
             A passionate QA professional dedicated to ensuring the highest quality standards through innovative testing approaches
           </p>
         </div>
-        
-        <div 
-          ref={aboutRef} 
-          className="grid md:grid-cols-2 gap-12 items-center transform translate-y-10 opacity-0 transition-all duration-1000 ease-out"
-        >
-          <div className="rounded-xl overflow-hidden shadow-xl">
-            <img 
-              src={kawkaImg} 
-              alt="Professional QA Engineer at work" 
-              className="w-full h-auto object-cover"
-            />
+
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div
+            ref={ref(0)}
+            className="opacity-0 translate-y-6 transition-all duration-700 ease-out p-4"
+          >
+            <div className="rounded-xl overflow-hidden shadow-xl group">
+              <img
+                src={kawkaImg}
+                alt="Professional QA Engineer at work"
+                className="w-full h-auto object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
+              />
+            </div>
           </div>
-          
+
           <div>
-            <h3 className="text-2xl font-bold text-slate-800 mb-6">Who I Am</h3>
-            <p className="text-gray-600 mb-6">
-              A strong technical background in test automation
-              and quality assurance, with hands-on experience
-              in designing and maintaining scalable automation
-              frameworks using Playwright with TypeScript and
-              C#/.NET. Proven experience in leading QA teams,
-              defining test strategies. Passionate about delivering high-quality
-              software through robust E2E, integration, and API
-              test coverage, while continuously improving QA
-              processes. Focused on delivering impactful,
-              maintainable automation solutions that align with
-              long-term product and business goals in agile,
-              innovation-driven environments.
-            </p>
-            
-            <div className="space-y-4 mb-8">
+            <h3
+              ref={ref(1)}
+              className="text-2xl font-bold text-slate-800 mb-6 opacity-0 translate-y-6 transition-all duration-700 ease-out"
+            >
+              Who I Am
+            </h3>
+
+            <div
+              ref={ref(2)}
+              className="opacity-0 translate-y-6 transition-all duration-700 ease-out space-y-4 mb-6"
+            >
+              <p className="text-gray-600">
+                QA Technical Lead and Manager with over 8 years of experience in software quality assurance. I have led cross-functional QA teams of 10+ engineers, driving quality culture across entire organizations.
+              </p>
+              <p className="text-gray-600">
+                I built and scaled a Centre of Excellence for QA from the ground up — establishing a company-wide QA Community of Practice, defining standards, and running workshops that upskilled teams across multiple projects.
+              </p>
+              <p className="text-gray-600">
+                Beyond leadership, I take a hands-on approach: onboarding engineers into projects, defining tailored test strategies, and selecting the right tools and automation frameworks to fit each product's needs.
+              </p>
+            </div>
+
+            <div
+              ref={ref(3)}
+              className="space-y-4 mb-8 opacity-0 translate-y-6 transition-all duration-700 ease-out"
+            >
               {[
                 {
                   icon: <Code className="h-6 w-6 text-teal-500" />,
@@ -101,10 +118,11 @@ const About: React.FC = () => {
                 </div>
               ))}
             </div>
-            
-            <button 
+
+            <button
+              ref={ref(4)}
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors duration-300"
+              className="px-8 py-4 bg-teal-500 hover:bg-teal-400 text-white rounded-full font-medium tracking-wider uppercase text-sm transition-all duration-300 hover:scale-105 opacity-0 translate-y-6 mt-4"
             >
               View My Projects
             </button>
